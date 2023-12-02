@@ -1,4 +1,4 @@
-# Binance_OPE
+# Imrann laisses papa travailler
 # creating directoriescd 
 mkdir clean_data
 mkdir raw_files
