@@ -1,5 +1,5 @@
 # Imrann laisses papa travailler
-# creating directoriescd 
+# Wiam dort 
 mkdir clean_data
 mkdir raw_files
 mkdir dags
