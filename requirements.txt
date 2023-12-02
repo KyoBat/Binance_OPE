@@ -1,0 +1,12 @@
+prophet
+scikit-learn
+python-binance
+uvicorn
+uvloop
+httptools
+pymongo
+pandas
+dash
+pydantic
+fastapi
+httpx

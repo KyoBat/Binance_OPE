@@ -1,0 +1,60 @@
+version: "3.9"
+
+services:
+  projet_binance:
+    image: api_bi:2
+    container_name: api_binance
+    networks: 
+      - my_network
+    hostname: api_binance_alias
+    ports:
+      - "3000:3000"
+
+  ui_binance:
+    image: ui_bi:14
+    container_name: ui_binance
+    networks: 
+      - my_network
+    depends_on:
+      - projet_binance
+    hostname: ui_binance_alias
+    ports:
+      - "2000:2000"
+
+  database:
+    container_name: my_mongo_bi
+    image: mongo:5.0
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_DATABASE=auth
+      - MONGO_INITDB_ROOT_PASSWORD=pass
+    networks: 
+      - my_network
+    hostname: mongo_alias
+    ports:
+      - '27017:27017'
+    volumes: 
+      - ./sample_training:/data/db
+
+  mongoexpress:
+    container_name: mongo-express_bi
+    image: mongo-express:0.54
+    depends_on:
+      - database
+    networks: 
+      - my_network
+    hostname: mongoexpress_alias
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=my_mongo_bi
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=pass
+      - ME_CONFIG_MONGODB_ENABLE_ADMIN=true
+      - ME_CONFIG_BASICAUTH_USERNAME=admin
+      - ME_CONFIG_BASICAUTH_PASSWORD=pass
+    ports:
+      - '8081:8081'
+    volumes: 
+      - ./sample_training:/data/db 
+
+networks:
+  my_network:
