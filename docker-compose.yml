@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   projet_binance:
-    image: api_bi:2
+    image: api_bi:1
     container_name: api_binance
     networks: 
       - my_network
@@ -11,7 +11,7 @@ services:
       - "3000:3000"
 
   ui_binance:
-    image: ui_bi:14
+    image: ui_bi:1
     container_name: ui_binance
     networks: 
       - my_network

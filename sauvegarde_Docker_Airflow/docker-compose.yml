@@ -210,7 +210,7 @@ services:
       - ./sample_training:/data/db
 
   projet_binance:
-    image: api_bi:2
+    image: api_bi:1
     container_name: api_binance
     hostname: api_binance_alias
     ports:
@@ -218,7 +218,7 @@ services:
 
 
   ui_binance:
-    image: ui_bi:14
+    image: ui_bi:1
     container_name: ui_binance
     depends_on:
       - projet_binance
